@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Sur E.I.R.L. - Especialistas en laminado y enchapado</title>
+    <style>
+        /* Variables de colores y fuentes */
+        :root {
+            --primary-color: #2c5530;
+            --secondary-color: #6b8e23;
+            --accent-color: #d4af37;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.whatsapp-link {
+            color: #25D366;
+            font-weight: 600;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 180px 0 100px;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Catálogo */
+        .catalog {
+            background-color: var(--light-color);
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 8px 16px;
+            margin: 0 5px 10px;
+            background-color: white;
+            border: 1px solid var(--primary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 20px;
+        }
+
+        /* Sobre Nosotros */
+        .about {
+            background-color: var(--light-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            padding-right: 20px;
+        }
+
+        .about-img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .mission-values {
+            margin-top: 30px;
+        }
+
+        .mission-values h3 {
+            margin-top: 20px;
+            color: var(--secondary-color);
+        }
+
+        /* Testimonios */
+        .testimonials {
+            background-color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent-color);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Contacto */
+        .contact {
+            background-color: var(--light-color);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item i {
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .map {
+            height: 300px;
+            background-color: #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        .whatsapp-float i {
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-text {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Villa Sur E.I.R.L.</a>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#contacto" class="whatsapp-link">Contacto <i class="fab fa-whatsapp"></i></a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Hero -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h1>Especialistas en laminado y enchapado de calidad</h1>
+            <p>Transformamos espacios con nuestros productos de madera de alta calidad y servicios profesionales</p>
+            <a href="https://wa.me/1234567890" class="btn btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Catálogo -->
+    <section class="catalog" id="catalogo">
+        <div class="container">
+            <h2>Nuestro Catálogo</h2>
+            <div class="categories">
+                <button class="category-btn active" data-category="all">Todos</button>
+                <button class="category-btn" data-category="laminados">Laminados</button>
+                <button class="category-btn" data-category="enchapes">Enchapes</button>
+                <button class="category-btn" data-category="acabados">Acabados</button>
+            </div>
+            <div class="products-grid">
+                <!-- Producto 1 -->
+                <div class="product-card" data-category="laminados">
+                    <img src="https://images.unsplash.com/photo-1595425970375-345e7840c5d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de cedro" class="product-img">
+                    <div class="product-info">
+                        <h3>Lámina de Cedro</h3>
+                        <p>Resistente y elegante, ideal para muebles de alta gama.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20la%20lámina%20de%20cedro" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Producto 2 -->
+                <div class="product-card" data-category="enchapes">
+                    <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Enchape de roble" class="product-img">
+                    <div class="product-info">
+                        <h3>Enchape de Roble</h3>
+                        <p>Duradero y con un acabado natural que realza cualquier espacio.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20enchape%20de%20roble" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Producto 3 -->
+                <div class="product-card" data-category="acabados">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Acabado satinado" class="product-img">
+                    <div class="product-info">
+                        <h3>Acabado Satinado</h3>
+                        <p>Textura suave y aspecto elegante para un toque sofisticado.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20acabado%20satinado" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Producto 4 -->
+                <div class="product-card" data-category="laminados">
+                    <img src="https://images.unsplash.com/photo-1596728325483-6b6a930d1c6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de nogal" class="product-img">
+                    <div class="product-info">
+                        <h3>Lámina de Nogal</h3>
+                        <p>Color oscuro y veteado distintivo para proyectos exclusivos.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20la%20lámina%20de%20nogal" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="services-grid">
+                <!-- Servicio 1 -->
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Laminado de madera" class="service-img">
+                    <div class="service-content">
+                        <h3>Laminado de Madera</h3>
+                        <p>Proceso especializado para crear láminas de madera de alta calidad con diferentes acabados y texturas.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20me%20interesa%20el%20servicio%20de%20laminado%20de%20madera" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Solicitar servicio
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 2 -->
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Servicio de enchapado" class="service-img">
+                    <div class="service-content">
+                        <h3>Servicio de Enchapado</h3>
+                        <p>Aplicación profesional de enchapes para muebles, paredes y superficies con acabados perfectos.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20me%20interesa%20el%20servicio%20de%20enchapado" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Solicitar servicio
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 3 -->
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1596728325483-6b6a930d1c6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cortes y acabados personalizados" class="service-img">
+                    <div class="service-content">
+                        <h3>Cortes y Acabados Personalizados</h3>
+                        <p>Realizamos cortes precisos y acabados a medida según las necesidades específicas de cada proyecto.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20me%20interesa%20el%20servicio%20de%20cortes%20y%20acabados%20personalizados" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Solicitar servicio
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section class="about" id="nosotros">
+        <div class="container">
+            <h2>Sobre Nosotros</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Villa Sur E.I.R.L. somos una microempresa con más de 10 años de experiencia especializada en laminado y enchapado de madera de alta calidad. Nos enorgullecemos de ofrecer productos y servicios que transforman espacios y satisfacen las necesidades de nuestros clientes.</p>
+                    
+                    <div class="mission-values">
+                        <h3>Nuestra Misión</h3>
+                        <p>Proporcionar productos de madera de la más alta calidad y servicios profesionales de laminado y enchapado, contribuyendo a la creación de espacios únicos y duraderos para nuestros clientes.</p>
+                        
+                        <h3>Nuestros Valores</h3>
+                        <p>Calidad, compromiso, innovación y servicio al cliente son los pilares que guían nuestro trabajo diario y nos permiten mantener relaciones duraderas con nuestros clientes.</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Nuestro taller" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Clientes Satisfechos</h2>
+            <div class="testimonials-grid">
+                <!-- Testimonio 1 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Excelente calidad en los laminados. El servicio fue profesional y el resultado superó mis expectativas. Definitivamente recomiendo a Villa Sur E.I.R.L.</p>
+                    <p class="testimonial-author">- Carlos Mendoza</p>
+                </div>
+                
+                <!-- Testimonio 2 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Trabajamos con Villa Sur en varios proyectos de diseño de interiores y siempre han cumplido con los plazos y la calidad prometida. Un socio confiable.</p>
+                    <p class="testimonial-author">- Diseño & Espacios S.A.</p>
+                </div>
+                
+                <!-- Testimonio 3 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">El enchapado que realizaron para mi oficina ha recibido muchos elogios. El acabado es impecable y el material de primera calidad.</p>
+                    <p class="testimonial-author">- Ana Rodríguez</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <h2>Contacto</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Dirección</h3>
+                            <p>Av. Industrial 123, Villa El Salvador, Lima</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Teléfono</h3>
+                            <p>+51 123 456 789</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Correo Electrónico</h3>
+                            <p>info@villasur.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h3>WhatsApp</h3>
+                            <p>+51 987 654 321</p>
+                            <a href="https://wa.me/1234567890" class="btn btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Escríbenos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map">
+                    <!-- Aquí iría el mapa de Google -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.9876543210987!2d-76.98765432109876!3d-12.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA3JzI0LjQiUyA3NsKwNTknMTEuNyJX!5e0!3m2!1ses!2spe!4v1234567890123!5m2!1ses!2spe" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Villa Sur E.I.R.L.</div>
+                    <p>Especialistas en laminado y enchapado de calidad desde 2010.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#catalogo">Catálogo</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#nosotros">Sobre Nosotros</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Productos</h3>
+                    <ul>
+                        <li><a href="#">Laminados</a></li>
+                        <li><a href="#">Enchapes</a></li>
+                        <li><a href="#">Acabados</a></li>
+                        <li><a href="#">Maderas Especiales</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="#">Laminado de Madera</a></li>
+                        <li><a href="#">Servicio de Enchapado</a></li>
+                        <li><a href="#">Cortes Personalizados</a></li>
+                        <li><a href="#">Acabados a Medida</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Villa Sur E.I.R.L. - Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menú hamburguesa para móviles
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Filtro de categorías en el catálogo
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const productCards = document.querySelectorAll('.product-card');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remover clase active de todos los botones
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // Agregar clase active al botón clickeado
+                button.classList.add('active');
+                
+                const category = button.getAttribute('data-category');
+                
+                productCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Smooth scroll para enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
