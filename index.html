@@ -112,10 +112,14 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
+            display: flex;
+            align-items: center;
             text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
         }
 
         .nav-links {
@@ -358,10 +362,10 @@
         }
 
         .map {
-            height: 300px;
-            background-color: #ddd;
+            height: 400px;
             border-radius: 8px;
             overflow: hidden;
+            box-shadow: var(--shadow);
         }
 
         /* Footer */
@@ -378,10 +382,9 @@
             margin-bottom: 40px;
         }
 
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
+        .footer-logo-img {
+            height: 50px;
+            width: auto;
             margin-bottom: 15px;
         }
 
@@ -512,6 +515,14 @@
             section {
                 padding: 60px 0;
             }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .map {
+                height: 300px;
+            }
         }
     </style>
     <!-- Font Awesome para iconos -->
@@ -527,7 +538,9 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">Villa Sur E.I.R.L.</a>
+                <a href="#" class="logo">
+                    <img src="https://instagram.flim6-4.fna.fbcdn.net/v/t51.2885-19/456340816_1142186736856229_3446893215491758310_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.flim6-4.fna.fbcdn.net&_nc_cat=105&_nc_oc=Q6cZ2QHFB8oZS44kLwOfpJBEKvDA_fIMIhSPDNad4LcIGsnqbL6PMRPRJ1F6cwpy_DJqYts&_nc_ohc=00KhOM_2t2UQ7kNvwEDA9MQ&_nc_gid=cHRQ_HYFuzK23R-D03v4MA&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AfYV8kAP6o5P3-6b_IcaPmQZXZvRsnFR16cfecZPLv1hwA&oe=68E11B43&_nc_sid=7a9f4b" alt="Villa Sur E.I.R.L." class="logo-img">
+                </a>
                 <ul class="nav-links">
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#catalogo">Catálogo</a></li>
@@ -718,7 +731,7 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h3>Dirección</h3>
-                            <p>Av. Industrial 123, Villa El Salvador, Lima</p>
+                            <p>LAMINAS & ENCHAPES VILLA SUR E.I.R.L.<br>Villa El Salvador, Lima</p>
                         </div>
                     </div>
                     
@@ -751,8 +764,8 @@
                 </div>
                 
                 <div class="map">
-                    <!-- Aquí iría el mapa de Google -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.9876543210987!2d-76.98765432109876!3d-12.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA3JzI0LjQiUyA3NsKwNTknMTEuNyJX!5e0!3m2!1ses!2spe!4v1234567890123!5m2!1ses!2spe" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <!-- Mapa real de la ubicación de Villa Sur E.I.R.L. -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.641357624621!2d-76.93398562509489!3d-12.204788788044507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b900567ea323%3A0x1e7d444be27a4bbb!2sLAMINAS%20%26%20ENCHAPES%20VILLA%20SUR%20E.I.R.L.!5e0!3m2!1ses-419!2spe!4v1759202760601!5m2!1ses-419!2spe" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -763,7 +776,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="footer-logo">Villa Sur E.I.R.L.</div>
+                    <img src="https://instagram.flim6-4.fna.fbcdn.net/v/t51.2885-19/456340816_1142186736856229_3446893215491758310_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.flim6-4.fna.fbcdn.net&_nc_cat=105&_nc_oc=Q6cZ2QHFB8oZS44kLwOfpJBEKvDA_fIMIhSPDNad4LcIGsnqbL6PMRPRJ1F6cwpy_DJqYts&_nc_ohc=00KhOM_2t2UQ7kNvwEDA9MQ&_nc_gid=cHRQ_HYFuzK23R-D03v4MA&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AfYV8kAP6o5P3-6b_IcaPmQZXZvRsnFR16cfecZPLv1hwA&oe=68E11B43&_nc_sid=7a9f4b" alt="Villa Sur E.I.R.L." class="footer-logo-img">
                     <p>Especialistas en laminado y enchapado de calidad desde 2010.</p>
                     <div class="social-icons">
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
