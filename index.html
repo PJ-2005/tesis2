@@ -94,6 +94,17 @@
             background-color: #128C7E;
         }
 
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
         /* Header */
         header {
             background-color: white;
@@ -206,6 +217,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
+            margin-bottom: 40px;
         }
 
         .product-card {
@@ -232,6 +244,96 @@
 
         .product-info h3 {
             margin-bottom: 10px;
+        }
+
+        .more-laminas-btn {
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .more-laminas-btn.show {
+            display: block;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--dark-color);
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 2001;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+
+        .modal-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .modal-product-card {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .modal-product-img {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .modal-product-info {
+            padding: 15px;
+        }
+
+        .modal-product-info h4 {
+            margin-bottom: 8px;
+            color: var(--primary-color);
         }
 
         /* Servicios */
@@ -479,6 +581,10 @@
             .about-text {
                 padding-right: 0;
             }
+            
+            .modal-products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
         }
 
         @media (max-width: 768px) {
@@ -523,6 +629,17 @@
             .map {
                 height: 300px;
             }
+            
+            .modal-content {
+                margin: 20px auto;
+                padding: 20px;
+                width: 95%;
+            }
+            
+            .modal-products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
         }
     </style>
     <!-- Font Awesome para iconos -->
@@ -533,6 +650,123 @@
     <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Modal para más láminas -->
+    <div id="laminasModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2 class="modal-title">Nuestra Completa Variedad de Láminas</h2>
+            <div class="modal-products-grid">
+                <!-- Lámina 1 -->
+                <div class="modal-product-card">
+                    <img src="https://images.unsplash.com/photo-1595425970375-345e7840c5d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de cedro" class="modal-product-img">
+                    <div class="modal-product-info">
+                        <h4>Lámina de Cedro Premium</h4>
+                        <p>Alta resistencia y elegancia natural</p>
+                    </div>
+                </div>
+                
+                <!-- Lámina 2 -->
+                <div class="modal-product-card">
+                    <img src="https://images.unsplash.com/photo-1596728325483-6b6a930d1c6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de nogal" class="modal-product-img">
+                    <div class="modal-product-info">
+                        <h4>Lámina de Nogal Negro</h4>
+                        <p>Color oscuro intenso, veteado único</p>
+                    </div>
+                </div>
+
+                <!-- Lámina 3 -->
+                <div class="modal-product-card">
+                    <img src="https://images.unsplash.com/photo-1560252196-5de7ad34aee1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de caoba" class="modal-product-img">
+                    <div class="modal-product-info">
+                        <h4>Lámina de Caoba Roja</h4>
+                        <p>Tono rojizo profundo, durabilidad excepcional</p>
+                    </div>
+                </div>
+
+                <!-- Lámina 4 -->
+                <div class="modal-product-card">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de pino" class="modal-product-img">
+                    <div class="modal-product-info">
+                        <h4>Lámina de Pino Natural</h4>
+                        <p>Económica y versátil para todo proyecto</p>
+                    </div>
+                </div>
+
+                <!-- Lámina 5 -->
+                <div class="modal-product-card">
+                    <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de roble blanco" class="modal-product-img">
+                    <div class="modal-product-info">
+                        <h4>Lámina de Roble Blanco</h4>
+                        <p>Textura suave, ideal para interiores modernos</p>
+                    </div>
+                </div>
+
+                <!-- Lámina 6 -->
+                <div class="modal-product-card">
+                    <img src="https://images.unsplash.com/photo-1597826368522-9f4cb5a6ba48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de teca" class="modal-product-img">
+                    <div class="modal-product-info">
+                        <h4>Lámina de Teca Natural</h4>
+                        <p>Resistente a humedad, perfecta para exteriores</p>
+                    </div>
+                </div>
+
+                <!-- Lámina 7 -->
+                <div class="modal-product-card">
+                    <img src="https://images.unsplash.com/photo-1595425970375-345e7840c5d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de arce" class="modal-product-img">
+                    <div class="modal-product-info">
+                        <h4>Lámina de Arce Canadiense</h4>
+                        <p>Color claro uniforme, grano fino</p>
+                    </div>
+                </div>
+
+                <!-- Lámina 8 -->
+                <div class="modal-product-card">
+                    <img src="https://images.unsplash.com/photo-1596728325483-6b6a930d1c6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de cerezo" class="modal-product-img">
+                    <div class="modal-product-info">
+                        <h4>Lámina de Cerezo Americano</h4>
+                        <p>Tono rojizo cálido, elegancia natural</p>
+                    </div>
+                </div>
+
+                <!-- Lámina 9 -->
+                <div class="modal-product-card">
+                    <img src="https://images.unsplash.com/photo-1560252196-5de7ad34aee1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de bambú" class="modal-product-img">
+                    <div class="modal-product-info">
+                        <h4>Lámina de Bambú Sostenible</h4>
+                        <p>Material ecológico, alta resistencia</p>
+                    </div>
+                </div>
+
+                <!-- Lámina 10 -->
+                <div class="modal-product-card">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de olivo" class="modal-product-img">
+                    <div class="modal-product-info">
+                        <h4>Lámina de Olivo Mediterráneo</h4>
+                        <p>Veteado único, tonos dorados naturales</p>
+                    </div>
+                </div>
+
+                <!-- Lámina 11 -->
+                <div class="modal-product-card">
+                    <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de wengué" class="modal-product-img">
+                    <div class="modal-product-info">
+                        <h4>Lámina de Wengué Africano</h4>
+                        <p>Color chocolate oscuro, textura densa</p>
+                    </div>
+                </div>
+
+                <!-- Lámina 12 -->
+                <div class="modal-product-card">
+                    <img src="https://images.unsplash.com/photo-1597826368522-9f4cb5a6ba48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de ipé" class="modal-product-img">
+                    <div class="modal-product-info">
+                        <h4>Lámina de Ipé Brasileño</h4>
+                        <p>Extrema durabilidad, resistencia natural</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Header -->
     <header>
@@ -569,7 +803,7 @@
     <!-- Catálogo -->
     <section class="catalog" id="catalogo">
         <div class="container">
-            <h2>Nuestro Catálogo</h2>
+            <h2>Nuestros Productos Más Vendidos</h2>
             <div class="categories">
                 <button class="category-btn active" data-category="all">Todos</button>
                 <button class="category-btn" data-category="laminados">Laminados</button>
@@ -577,7 +811,7 @@
                 <button class="category-btn" data-category="acabados">Acabados</button>
             </div>
             <div class="products-grid">
-                <!-- Producto 1 -->
+                <!-- LAMINADOS - 6 productos -->
                 <div class="product-card" data-category="laminados">
                     <img src="https://images.unsplash.com/photo-1595425970375-345e7840c5d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de cedro" class="product-img">
                     <div class="product-info">
@@ -589,31 +823,6 @@
                     </div>
                 </div>
                 
-                <!-- Producto 2 -->
-                <div class="product-card" data-category="enchapes">
-                    <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Enchape de roble" class="product-img">
-                    <div class="product-info">
-                        <h3>Enchape de Roble</h3>
-                        <p>Duradero y con un acabado natural que realza cualquier espacio.</p>
-                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20enchape%20de%20roble" class="btn btn-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Producto 3 -->
-                <div class="product-card" data-category="acabados">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Acabado satinado" class="product-img">
-                    <div class="product-info">
-                        <h3>Acabado Satinado</h3>
-                        <p>Textura suave y aspecto elegante para un toque sofisticado.</p>
-                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20acabado%20satinado" class="btn btn-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Producto 4 -->
                 <div class="product-card" data-category="laminados">
                     <img src="https://images.unsplash.com/photo-1596728325483-6b6a930d1c6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de nogal" class="product-img">
                     <div class="product-info">
@@ -624,6 +833,191 @@
                         </a>
                     </div>
                 </div>
+
+                <div class="product-card" data-category="laminados">
+                    <img src="https://images.unsplash.com/photo-1560252196-5de7ad34aee1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de caoba" class="product-img">
+                    <div class="product-info">
+                        <h3>Lámina de Caoba</h3>
+                        <p>Color rojizo intenso y durabilidad excepcional.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20la%20lámina%20de%20caoba" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="laminados">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de pino" class="product-img">
+                    <div class="product-info">
+                        <h3>Lámina de Pino</h3>
+                        <p>Económica y versátil, perfecta para proyectos diversos.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20la%20lámina%20de%20pino" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="laminados">
+                    <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de roble blanco" class="product-img">
+                    <div class="product-info">
+                        <h3>Lámina de Roble Blanco</h3>
+                        <p>Textura suave y color claro para ambientes modernos.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20la%20lámina%20de%20roble%20blanco" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="laminados">
+                    <img src="https://images.unsplash.com/photo-1597826368522-9f4cb5a6ba48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lámina de teca" class="product-img">
+                    <div class="product-info">
+                        <h3>Lámina de Teca</h3>
+                        <p>Resistente a la humedad, ideal para exteriores.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20la%20lámina%20de%20teca" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- ENCHAPES - 6 productos -->
+                <div class="product-card" data-category="enchapes">
+                    <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Enchape de roble" class="product-img">
+                    <div class="product-info">
+                        <h3>Enchape de Roble</h3>
+                        <p>Duradero y con un acabado natural que realza cualquier espacio.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20enchape%20de%20roble" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="enchapes">
+                    <img src="https://images.unsplash.com/photo-1595425970375-345e7840c5d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Enchape de cedro" class="product-img">
+                    <div class="product-info">
+                        <h3>Enchape de Cedro</h3>
+                        <p>Aroma natural y resistencia a insectos.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20enchape%20de%20cedro" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="enchapes">
+                    <img src="https://images.unsplash.com/photo-1596728325483-6b6a930d1c6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Enchape de nogal" class="product-img">
+                    <div class="product-info">
+                        <h3>Enchape de Nogal</h3>
+                        <p>Elegancia y sofisticación en tonos oscuros.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20enchape%20de%20nogal" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="enchapes">
+                    <img src="https://images.unsplash.com/photo-1560252196-5de7ad34aee1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Enchape de caoba" class="product-img">
+                    <div class="product-info">
+                        <h3>Enchape de Caoba</h3>
+                        <p>Color rojizo profundo y gran durabilidad.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20enchape%20de%20caoba" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="enchapes">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Enchape de pino" class="product-img">
+                    <div class="product-info">
+                        <h3>Enchape de Pino</h3>
+                        <p>Versátil y económico para diversos proyectos.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20enchape%20de%20pino" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="enchapes">
+                    <img src="https://images.unsplash.com/photo-1597826368522-9f4cb5a6ba48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Enchape de teca" class="product-img">
+                    <div class="product-info">
+                        <h3>Enchape de Teca</h3>
+                        <p>Ideal para áreas húmedas y exteriores.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20enchape%20de%20teca" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- ACABADOS - 6 productos -->
+                <div class="product-card" data-category="acabados">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Acabado satinado" class="product-img">
+                    <div class="product-info">
+                        <h3>Acabado Satinado</h3>
+                        <p>Textura suave y aspecto elegante para un toque sofisticado.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20acabado%20satinado" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="acabados">
+                    <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Acabado brillante" class="product-img">
+                    <div class="product-info">
+                        <h3>Acabado Brillante</h3>
+                        <p>Superficie reflectante que maximiza la luz.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20acabado%20brillante" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="acabados">
+                    <img src="https://images.unsplash.com/photo-1596728325483-6b6a930d1c6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Acabado mate" class="product-img">
+                    <div class="product-info">
+                        <h3>Acabado Mate</h3>
+                        <p>Superficie sin reflejos para un look moderno y discreto.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20acabado%20mate" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="acabados">
+                    <img src="https://images.unsplash.com/photo-1560252196-5de7ad34aee1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Acabado texturizado" class="product-img">
+                    <div class="product-info">
+                        <h3>Acabado Texturizado</h3>
+                        <p>Relieve natural que resalta la veta de la madera.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20acabado%20texturizado" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="acabados">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Acabado barnizado" class="product-img">
+                    <div class="product-info">
+                        <h3>Acabado Barnizado</h3>
+                        <p>Protección duradera con apariencia natural.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20acabado%20barnizado" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="acabados">
+                    <img src="https://images.unsplash.com/photo-1597826368522-9f4cb5a6ba48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Acabado lacado" class="product-img">
+                    <div class="product-info">
+                        <h3>Acabado Lacado</h3>
+                        <p>Superficie lisa y uniforme en diversos colores.</p>
+                        <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20el%20acabado%20lacado" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón para más láminas (solo visible en categoría laminados) -->
+            <div class="more-laminas-btn" id="moreLaminasBtn">
+                <button class="btn btn-outline" id="openLaminasModal">
+                    <i class="fas fa-images"></i> Ver Más Variedad de Láminas
+                </button>
             </div>
         </div>
     </section>
@@ -823,7 +1217,7 @@
         </div>
     </footer>
 
-    <script>
+     <script>
         // Menú hamburguesa para móviles
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
@@ -842,6 +1236,7 @@
         // Filtro de categorías en el catálogo
         const categoryButtons = document.querySelectorAll('.category-btn');
         const productCards = document.querySelectorAll('.product-card');
+        const moreLaminasBtn = document.getElementById('moreLaminasBtn');
         
         categoryButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -859,6 +1254,13 @@
                         card.style.display = 'none';
                     }
                 });
+
+                // Mostrar u ocultar botón de más láminas
+                if (category === 'laminados') {
+                    moreLaminasBtn.classList.add('show');
+                } else {
+                    moreLaminasBtn.classList.remove('show');
+                }
             });
         });
         
@@ -878,6 +1280,37 @@
                     });
                 }
             });
+        });
+
+        // Modal para más láminas
+        const modal = document.getElementById('laminasModal');
+        const openModalBtn = document.getElementById('openLaminasModal');
+        const closeModalBtn = document.querySelector('.close-modal');
+
+        openModalBtn.addEventListener('click', () => {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Cerrar modal al hacer clic fuera del contenido
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         });
     </script>
 </body>
